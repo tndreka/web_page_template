@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-lg bg-white/80 border border-white/20 shadow-lg;
+  }
+  
+  .button-primary {
+    @apply px-6 py-3 bg-accent text-white rounded-lg transition-all duration-300
+           hover:bg-accent/90 active:scale-95 font-medium;
+  }
+  
+  .nav-link {
+    @apply relative text-text/80 hover:text-text transition-colors duration-300
+           after:content-[''] after:absolute after:bottom-0 after:left-0 
+           after:w-full after:h-0.5 after:bg-accent after:scale-x-0
+           after:transition-transform after:duration-300
+           hover:after:scale-x-100;
+  }
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
